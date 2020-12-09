@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="704.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
    <children>
@@ -15,14 +14,14 @@
          <children>
             <Pane fx:id="topPane" prefHeight="41.0" prefWidth="704.0">
                <children>
-                  <Label fx:id="titleLabel" contentDisplay="CENTER" layoutX="14.0" layoutY="4.0" prefHeight="33.0" prefWidth="677.0" text="Car management tool" textFill="WHITE"/>
+                  <Label fx:id="titleLabel" contentDisplay="CENTER" layoutX="14.0" layoutY="4.0" prefHeight="33.0" prefWidth="677.0" text="Car management tool" textFill="WHITE" />
                   <Button fx:id="buttonX" layoutX="657.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeApp" prefHeight="27.0" prefWidth="46.0" styleClass="top-buttons" text="X" />
                   <Button fx:id="buttonMinimize" layoutX="611.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimizeApp" prefHeight="27.0" prefWidth="46.0" styleClass="top-buttons" text="-" />
                </children>
             </Pane>
-            <Label fx:id="searchLabel" layoutX="235.0" layoutY="64.0" prefHeight="47.0" prefWidth="58.0" text="Search" textFill="WHITE"/>
+            <Label fx:id="searchLabel" layoutX="235.0" layoutY="64.0" prefHeight="47.0" prefWidth="58.0" text="Search" textFill="WHITE" />
             <TextField fx:id="searchField" layoutX="293.0" layoutY="74.0" prefHeight="27.0" prefWidth="213.0" />
-            <Button fx:id="buttonRemove" layoutX="283.0" layoutY="586.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="138.0" text="Remove this car"/>
+            <Button fx:id="buttonRemove" layoutX="283.0" layoutY="586.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="138.0" text="Remove this car" />
             <TableView layoutX="23.0" layoutY="133.0" prefHeight="441.0" prefWidth="661.0">
               <columns>
                 <TableColumn prefWidth="155.0" text="Brand" />
@@ -33,6 +32,13 @@
                   <TableColumn minWidth="0.0" prefWidth="137.0" text="Year" />
               </columns>
             </TableView>
+            <Pane layoutX="638.0" layoutY="623.0" prefHeight="19.0" prefWidth="58.0" styleClass="container-for-buttons">
+               <children>
+                  <Button fx:id="colorRed" layoutX="7.0" layoutY="3.0" maxWidth="25.0" minHeight="11.0" minWidth="11.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="18.0" styleClass="color-buttons" onAction="#changeColorToRed"/>
+                  <Button fx:id="colorYellow" layoutX="24.0" layoutY="3.0" maxWidth="19.0" minWidth="12.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="19.0" styleClass="color-buttons" onAction="#changeColorToYellow"/>
+                  <Button fx:id="colorGreen" layoutX="42.0" layoutY="3.0" maxHeight="21.0" maxWidth="25.0" minHeight="5.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="12.0" styleClass="color-buttons" onAction="#changeColorToGreen" />
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

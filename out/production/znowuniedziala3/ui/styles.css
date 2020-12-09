@@ -22,7 +22,24 @@
     -fx-text-fill: 	#FFFFFF;
 }
 
+.top-buttons {
+    -fx-font-family: System Bold;
+    -fx-font-size: 17.0;
+    -fx-text-fill: #FFFFFF;
+}
 
+.color-buttons {
+    -fx-background-radius: 20em;
+    -fx-min-width: 12px;
+    -fx-min-height: 12px;
+    -fx-max-width: 12px;
+    -fx-max-height: 12px;
+}
+
+.container-for-buttons {
+    -fx-background-color: #181818;
+    -fx-background-radius: 30em;
+}
 
 #topPane {
     -fx-background-color: #FF0000;
@@ -42,12 +59,6 @@
     -fx-text-fill: #000000;
 }
 
-.top-buttons {
-    -fx-font-family: System Bold;
-    -fx-font-size: 17.0;
-    -fx-text-fill: #FFFFFF;
-}
-
 #buttonRemove {
     -fx-font-size: 16.0;
 }
@@ -58,4 +69,16 @@
 
 #searchLabel {
     -fx-font-size: 14.0;
+}
+
+#colorRed {
+    -fx-background-color: #FF0000;
+}
+
+#colorYellow {
+    -fx-background-color: #ffbe2f;
+}
+
+#colorGreen {
+    -fx-background-color: #28cc42;
 }
