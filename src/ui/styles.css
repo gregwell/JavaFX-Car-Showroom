@@ -8,12 +8,6 @@
     -fx-cursor: hand;
 }
 
-.table-view {
-    -fx-background-color: #202020;
-    -fx-border-color: #202020;
-    -fx-border-radius: 0;
-}
-
 .text-field {
     -fx-border-color:  	#FFFFFF;
     -fx-background-color: #202020;
@@ -82,3 +76,93 @@
 #colorGreen {
     -fx-background-color: #28cc42;
 }
+
+/*
+============================= TABLES =============================
+ */
+
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #202020;
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-text-background-color: red;
+}
+
+.column-header.green-header {
+    -fx-text-background-color: #28cc42;
+}
+
+.column-header.red-header {
+    -fx-text-background-color: #FF0000;
+}
+
+.column-header.yellow-header {
+    -fx-text-background-color: #ffbe2f;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+    -fx-border-color: #282828;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #202020;
+    -fx-text-background-color: red;
+}
+
+.table-row-cell:hover .green-hover {
+    -fx-text-background-color: #28cc42;
+}
+
+.table-row-cell:hover .red-hover {
+    -fx-text-background-color: #FF0000;
+}
+
+.table-row-cell:hover .yellow-hover {
+    -fx-text-background-color: #ffbe2f;
+}
+
+.table-row-cell {
+    -fx-background-color: #202020;
+    -fx-text-background-color: #909090;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: red;
+    -fx-text-background-color: #202020;
+}
+
+.table-row-cell:selected .green-selection {
+    -fx-text-background-color: #202020;
+    -fx-background-color: #28cc42;
+}
+
+.table-row-cell:selected .red-selection {
+    -fx-text-background-color: #202020;
+    -fx-background-color: #FF0000;
+}
+
+.table-row-cell:selected .yellow-selection {
+    -fx-text-background-color: #202020;
+    -fx-background-color: #ffbe2f;
+}
+
