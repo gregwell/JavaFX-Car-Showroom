@@ -77,9 +77,13 @@
     -fx-background-color: #28cc42;
 }
 
+
 /*
+==================================================================
 ============================= TABLES =============================
+==================================================================
  */
+
 
 .table-view {
     -fx-background-color: transparent;
@@ -166,3 +170,22 @@
     -fx-background-color: #ffbe2f;
 }
 
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.table-view .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar .thumb {
+    -fx-background-color: #232323;
+}
+
+.table-view .increment-button {
+    -fx-background-color: #232323;
+}

@@ -50,6 +50,10 @@ public class CarShowroomContainer {
         return new ArrayList<>(CarCenters.values());
     }
 
+    public Map<String,CarShowroom> getCarShowroomsMap(){
+        return this.CarCenters;
+    }
+
     public CarShowroom getCarshowroomByName(String name){
         return CarCenters.values().stream()
                 .filter(carShowroom -> carShowroom.getCarCenterName().equals(name))

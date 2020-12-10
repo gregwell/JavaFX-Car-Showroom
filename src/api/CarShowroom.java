@@ -34,6 +34,7 @@ CarShowroom implements Comparator<String> {
         else{
             vehicles.put(vehicle,1);
         }
+        vehicle.setCarShowroom(this);
     }
 
     public void getProduct(Vehicle vehicle) {
@@ -84,7 +85,7 @@ CarShowroom implements Comparator<String> {
         Collections.sort(sortedVehicleListByName, new Comparator<Vehicle>() {
             @Override
             public int compare(Vehicle vehicle1, Vehicle vehicle2) {
-                return vehicle1.mark.compareTo(vehicle2.mark);
+                return vehicle1.brand.compareTo(vehicle2.brand);
             }
         });
         return sortedVehicleListByName;
@@ -111,14 +112,14 @@ CarShowroom implements Comparator<String> {
     public Vehicle checkIfVehicleExists(Vehicle v){
         return vehicles.keySet()
                 .stream()
-                .filter(e -> (e.mark.equals(v.mark) && e.model.equals(v.model)))
+                .filter(e -> (e.brand.equals(v.brand) && e.model.equals(v.model)))
                 .findFirst()
                 .orElse(null);
     }
     public int getVehicleCount(Vehicle v){
         return  vehicles.entrySet()
                 .stream()
-                .filter(e -> (e.getKey().mark.equals(v.mark) && e.getKey().model.equals(v.model)))
+                .filter(e -> (e.getKey().brand.equals(v.brand) && e.getKey().model.equals(v.model)))
                 .findFirst().get().getValue();
 
     }

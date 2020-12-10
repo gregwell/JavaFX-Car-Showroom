@@ -22,21 +22,21 @@
             <Label fx:id="searchLabel" layoutX="235.0" layoutY="64.0" prefHeight="47.0" prefWidth="58.0" text="Search" textFill="WHITE" />
             <TextField fx:id="searchField" layoutX="293.0" layoutY="74.0" prefHeight="27.0" prefWidth="213.0" />
             <Button fx:id="buttonRemove" layoutX="283.0" layoutY="586.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="138.0" text="Remove this car" />
-            <TableView fx:id="table" layoutX="23.0" layoutY="133.0" prefHeight="441.0" prefWidth="662.0">
+            <TableView fx:id="table" layoutX="23.0" layoutY="133.0" prefHeight="441.0" prefWidth="671.0">
               <columns>
-                  <TableColumn fx:id="colBrand" prefWidth="110.0" text="Brand" />
-                  <TableColumn fx:id="colModel" prefWidth="110.0" text="Model" />
-                  <TableColumn fx:id="colShowroomName" prefWidth="110.0" text="Showroom" />
-                  <TableColumn fx:id="colCity" prefWidth="110.0" text="City" />
-                  <TableColumn fx:id="colPrice" minWidth="0.0" prefWidth="108.0" text="Price" />
-                  <TableColumn fx:id="colYear" minWidth="0.0" prefWidth="110.0" text="Year" />
+                  <TableColumn fx:id="colBrand" prefWidth="100.0" text="Brand" />
+                  <TableColumn fx:id="colModel" prefWidth="100.0" text="Model" />
+                  <TableColumn fx:id="colShowroomName" prefWidth="270.0" text="Showroom" />
+                  <TableColumn fx:id="colEngine" prefWidth="50.0" text="Engine cap." />
+                  <TableColumn fx:id="colPrice" minWidth="0.0" prefWidth="88.0" text="Price" />
+                  <TableColumn fx:id="colYear" minWidth="0.0" prefWidth="50.0" text="Year" />
               </columns>
             </TableView>
             <Pane layoutX="638.0" layoutY="623.0" prefHeight="19.0" prefWidth="58.0" styleClass="container-for-buttons">
                <children>
-                  <Button fx:id="colorRed" layoutX="7.0" layoutY="3.0" maxWidth="25.0" minHeight="11.0" minWidth="11.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="18.0" styleClass="color-buttons" onAction="#changeColorToRed"/>
-                  <Button fx:id="colorYellow" layoutX="24.0" layoutY="3.0" maxWidth="19.0" minWidth="12.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="19.0" styleClass="color-buttons" onAction="#changeColorToYellow"/>
-                  <Button fx:id="colorGreen" layoutX="42.0" layoutY="3.0" maxHeight="21.0" maxWidth="25.0" minHeight="5.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="12.0" styleClass="color-buttons" onAction="#changeColorToGreen" />
+                  <Button fx:id="colorRed" layoutX="7.0" layoutY="3.0" maxWidth="25.0" minHeight="11.0" minWidth="11.0" mnemonicParsing="false" onAction="#changeColorToRed" prefHeight="11.0" prefWidth="18.0" styleClass="color-buttons" />
+                  <Button fx:id="colorYellow" layoutX="24.0" layoutY="3.0" maxWidth="19.0" minWidth="12.0" mnemonicParsing="false" onAction="#changeColorToYellow" prefHeight="12.0" prefWidth="19.0" styleClass="color-buttons" />
+                  <Button fx:id="colorGreen" layoutX="42.0" layoutY="3.0" maxHeight="21.0" maxWidth="25.0" minHeight="5.0" mnemonicParsing="false" onAction="#changeColorToGreen" prefHeight="5.0" prefWidth="12.0" styleClass="color-buttons" />
                </children>
             </Pane>
          </children>

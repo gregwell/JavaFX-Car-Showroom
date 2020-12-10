@@ -2,6 +2,8 @@ package ui;
 
 import api.CarShowroom;
 import api.CarShowroomContainer;
+import api.Vehicle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +17,9 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -36,22 +40,25 @@ public class Controller implements Initializable {
     private Button buttonRemove;
 
     @FXML
-    TableView<ModelTable> table;
+    TableView<Vehicle> table;
     @FXML
-    TableColumn<ModelTable, String> colBrand;
+    TableColumn<Vehicle, String> colBrand;
     @FXML
-    TableColumn<ModelTable, String> colModel;
+    TableColumn<Vehicle, String> colModel;
     @FXML
-    TableColumn<ModelTable, String> colShowroomName;
+    TableColumn<Vehicle, String> colShowroomName;
     @FXML
-    TableColumn<ModelTable, String> colCity;
+    TableColumn<Vehicle, String> colEngine;
     @FXML
-    TableColumn<ModelTable, Integer> colPrice;
+    TableColumn<Vehicle, Integer> colPrice;
     @FXML
-    TableColumn<ModelTable, Integer> colYear;
+    TableColumn<Vehicle, Integer> colYear;
 
 
-    ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
+    //ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
+
+    private ObservableList<Vehicle> observableTable = FXCollections.observableArrayList();
+    private ObservableList<CarShowroom> observableComboBox = FXCollections.observableArrayList();
 
     @FXML
     private void closeApp(ActionEvent actionEvent) {
@@ -78,6 +85,7 @@ public class Controller implements Initializable {
         backgroundPane.setStyle("-fx-border-color: " + bgColor);
         buttonRemove.setStyle("-fx-background-color: " + bgColor + "; -fx-text-fill: " + textColor);
 
+
         for (int i =0 ; i<6 ; i++ ) {
             table.getColumns().get(i).getStyleClass().clear();
             table.getColumns().get(i).getStyleClass().add(colorName+"-header");
@@ -99,27 +107,24 @@ public class Controller implements Initializable {
 
         CarShowroomContainer container = new CarShowroomContainer();
         container = DataGenerator.loadData();
-        List<CarShowroom> carShowRoomList = container.getCarShowrooms();
 
-        String carShowroomName = carShowRoomList.get(0).getCarCenterName();
-        System.out.println(carShowroomName);
+        //observableTable<Vehicle> , observableComboBox<CarShowroom>
 
-        int i = 0;
-        while (i<5) {
-            oblist.add(new ModelTable("dd", "dd", "dd", "dd","dd","dd"));
-            i++;
+        for (Map.Entry<String, CarShowroom> entry : container.getCarShowroomsMap().entrySet()) {
+            CarShowroom c = entry.getValue();
+            for (Vehicle vehicles : c.sortByName()) {
+                observableTable.addAll(vehicles);
+            }
         }
 
         colBrand.setCellValueFactory(new PropertyValueFactory<>("brand"));
         colModel.setCellValueFactory(new PropertyValueFactory<>("model"));
-        colShowroomName.setCellValueFactory(new PropertyValueFactory<>("showroomName"));
-        colCity.setCellValueFactory(new PropertyValueFactory<>("city"));
+        colShowroomName.setCellValueFactory((car)->new SimpleStringProperty(car.getValue().getCarShowroom().getCarCenterName()));
+        colEngine.setCellValueFactory(new PropertyValueFactory<>("engineCapacity"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colYear.setCellValueFactory(new PropertyValueFactory<>("year"));
+        colYear.setCellValueFactory(new PropertyValueFactory<>("prodYear"));
 
-
-        table.setItems(oblist);
-
+        table.setItems(observableTable);
     }
 
 

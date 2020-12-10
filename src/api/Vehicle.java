@@ -4,16 +4,17 @@ import java.util.Objects;
 
 public class Vehicle implements Comparable<Vehicle> {
 
-    String mark;
+    String brand;
     String model;
     ItemCondition condition;
     double price;
     int prodYear;
     double progress;
     double engineCapacity;
+    CarShowroom carShowroom;
 
-    public Vehicle(String mark, String model, ItemCondition condition, double price, int prodYear, double progress, double engineCapacity) {
-        this.mark = mark;
+    public Vehicle(String brand, String model, ItemCondition condition, double price, int prodYear, double progress, double engineCapacity) {
+        this.brand = brand;
         this.model = model;
         this.condition = condition;
         this.price = price;
@@ -28,7 +29,7 @@ public class Vehicle implements Comparable<Vehicle> {
 
     public String print() {
         return "Vehicle{" +
-                "mark='" + mark + '\'' +
+                "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", condition=" + condition +
                 ", price=" + price +
@@ -40,7 +41,7 @@ public class Vehicle implements Comparable<Vehicle> {
 
     @Override
     public int compareTo(Vehicle vehicle) {
-        return vehicle.mark.equals(this.mark) &&
+        return vehicle.brand.equals(this.brand) &&
                 vehicle.model.equals(this.model) ? 1 : 0;
     }
 
@@ -53,18 +54,18 @@ public class Vehicle implements Comparable<Vehicle> {
                 prodYear == vehicle.prodYear &&
                 Double.compare(vehicle.progress, progress) == 0 &&
                 Double.compare(vehicle.engineCapacity, engineCapacity) == 0 &&
-                Objects.equals(mark, vehicle.mark) &&
+                Objects.equals(brand, vehicle.brand) &&
                 Objects.equals(model, vehicle.model) &&
                 condition == vehicle.condition;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mark, model, condition, price, prodYear, progress, engineCapacity);
+        return Objects.hash(brand, model, condition, price, prodYear, progress, engineCapacity);
     }
 
-    public String getMark() {
-        return mark;
+    public String getBrand() {
+        return brand;
     }
 
     public String getModel() {
@@ -89,5 +90,13 @@ public class Vehicle implements Comparable<Vehicle> {
 
     public double getEngineCapacity() {
         return engineCapacity;
+    }
+
+    public void setCarShowroom(CarShowroom cs) {
+        this.carShowroom = cs;
+    }
+
+    public CarShowroom getCarShowroom() {
+        return carShowroom;
     }
 }
