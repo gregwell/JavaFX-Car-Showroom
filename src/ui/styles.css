@@ -176,12 +176,14 @@
     -fx-background-color: #202020;
     -fx-text-background-color: #909090;
 }
-
+/*
 .table-row-cell:selected {
     -fx-background-color: red;
     -fx-text-background-color: #202020;
 }
 
+
+ */
 .table-row-cell:selected .green-selection {
     -fx-text-background-color: #202020;
     -fx-background-color: #28cc42;

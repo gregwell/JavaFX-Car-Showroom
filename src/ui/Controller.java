@@ -61,6 +61,8 @@ public class Controller implements Initializable {
 
     //ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
 
+    CarShowroomContainer container = new CarShowroomContainer();
+
     private ObservableList<Vehicle> observableTable = FXCollections.observableArrayList();
     private ObservableList<CarShowroom> observableComboBox = FXCollections.observableArrayList();
 
@@ -129,13 +131,13 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CarShowroomContainer container = new CarShowroomContainer();
         container = DataGenerator.loadData();
 
         //observableTable<Vehicle> , observableComboBox<CarShowroom>
 
         initTable(container);
         initComboBox(container);
+        colorChange("yellow","#ffbe2f", "#000000");
     }
 
     private void initComboBox(CarShowroomContainer container) {
@@ -178,7 +180,13 @@ public class Controller implements Initializable {
                 });
                 table.setItems(filteredList);
             }
-           // initTableSearcher();
+            //initTableSearcher();
         }
+    }
+
+    public void removeCar(ActionEvent actionEvent) {
+        Vehicle selectedVehicle = table.getSelectionModel().getSelectedItem();
+        observableTable.remove(selectedVehicle);
+        //remove from container/carshowrrom
     }
 }
