@@ -50,7 +50,7 @@ public class DataGenerator {
 
         Vehicle v7 = new Vehicle("Fiat", "Seicento", ItemCondition.USED, 1150, 2006, 160732, 1.0);
         Vehicle v8 = new Vehicle("Renault", "Clio", ItemCondition.DAMAGED, 5000, 2005, 300250, 2.0);
-        Vehicle v9 = new Vehicle("Renault", "Clio", ItemCondition.USED, 21000, 2014, 44555, 2.3);
+       // Vehicle v9 = new Vehicle("Renault", "Clio", ItemCondition.USED, 21000, 2014, 44555, 2.3);
         Vehicle v10 = new Vehicle("Ford", "Fiesta", ItemCondition.USED, 10500, 1999, 250567, 1.6);
         Vehicle v11 = new Vehicle("Volvo", "XC40", ItemCondition.USED, 45250, 2016, 70232, 2.5);
         Vehicle v12 = new Vehicle("Volvo", "XC60", ItemCondition.USED, 50233, 2016, 111200, 2.8);
@@ -58,10 +58,10 @@ public class DataGenerator {
         Vehicle v14 = new Vehicle("Volvo", "XC60", ItemCondition.USED, 50233, 2016, 111200, 2.8);
         Vehicle v15 = new Vehicle("Volvo", "XC60", ItemCondition.USED, 50233, 2016, 111200, 2.8);
 
-        CarShowroom m = new CarShowroom("MCTS. Miejskie Centrum Tanich Samochodow", 120);
+        CarShowroom m = new CarShowroom("McDonalds Samochody Polska", 120);
         m.addVehicle(v7);
         m.addVehicle(v8);
-        m.addVehicle(v9);
+        //m.addVehicle(v9);
         m.addVehicle(v10);
         m.addVehicle(v11);
         m.addVehicle(v12);

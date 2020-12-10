@@ -6,6 +6,7 @@ import api.Vehicle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,6 +54,9 @@ public class Controller implements Initializable {
     TableColumn<Vehicle, Integer> colPrice;
     @FXML
     TableColumn<Vehicle, Integer> colYear;
+
+    @FXML
+    ComboBox<CarShowroom> comboBox;
 
 
     //ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
@@ -103,12 +107,7 @@ public class Controller implements Initializable {
         colorChange("green","#28cc42", "#000000");
     }
 
-    private void initTable() {
-
-        CarShowroomContainer container = new CarShowroomContainer();
-        container = DataGenerator.loadData();
-
-        //observableTable<Vehicle> , observableComboBox<CarShowroom>
+    private void initTable(CarShowroomContainer container) {
 
         for (Map.Entry<String, CarShowroom> entry : container.getCarShowroomsMap().entrySet()) {
             CarShowroom c = entry.getValue();
@@ -130,6 +129,56 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initTable();
+        CarShowroomContainer container = new CarShowroomContainer();
+        container = DataGenerator.loadData();
+
+        //observableTable<Vehicle> , observableComboBox<CarShowroom>
+
+        initTable(container);
+        initComboBox(container);
+    }
+
+    private void initComboBox(CarShowroomContainer container) {
+
+        observableComboBox.addAll(container.getCarShowroomsMap().values());
+
+        comboBox.setCellFactory(comboBox -> new ListCell<CarShowroom>(){
+            @Override
+            protected void updateItem(CarShowroom carShowroom, boolean b) {
+                super.updateItem(carShowroom, b);
+                if(carShowroom == null || b) {
+                    setText("Showing all showrooms");
+                } else {
+                    setText(carShowroom.getCarCenterName());
+                }
+            }
+        });
+
+        comboBox.getItems().add(new CarShowroom("all",0));
+        comboBox.getItems().addAll(observableComboBox);
+        comboBox.getSelectionModel().select(0);
+
+
+
+    }
+
+    public void refreshTableFromComboBox(ActionEvent actionEvent) {
+
+        CarShowroom showroom = comboBox.getSelectionModel().getSelectedItem();
+        if(showroom != null) {
+            if(showroom.getCarCenterName().equals("all")) {
+                table.setItems(observableTable);
+            }
+            else {
+                FilteredList<Vehicle> filteredList = new FilteredList<>(observableTable);
+                filteredList.setPredicate(vehicle -> {
+                    if (vehicle.getCarShowroom().equals(showroom))
+                        return true;
+                    return false;
+                });
+                table.setItems(filteredList);
+            }
+           // initTableSearcher();
+        }
     }
 }
