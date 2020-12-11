@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,6 +40,9 @@ public class Controller implements Initializable {
     private Pane backgroundPane;
     @FXML
     private Button buttonRemove;
+
+    @FXML
+    private TextField searchField;
 
     @FXML
     TableView<Vehicle> table;
@@ -138,6 +142,8 @@ public class Controller implements Initializable {
         initTable(container);
         initComboBox(container);
         colorChange("yellow","#ffbe2f", "#000000");
+        initTableSearcher();
+        initTooltip();
     }
 
     private void initComboBox(CarShowroomContainer container) {
@@ -180,8 +186,45 @@ public class Controller implements Initializable {
                 });
                 table.setItems(filteredList);
             }
-            //initTableSearcher();
+            initTableSearcher();
         }
+    }
+
+    private void initTableSearcher() {
+
+        FilteredList<Vehicle> filteredList = new FilteredList<>(table.getItems(), b->true);
+        searchField.textProperty().addListener((observable, oldValue, newValue)->{
+            filteredList.setPredicate((vehicle -> {
+                if(newValue==null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCased = newValue.toLowerCase();
+
+                return vehicle.getName().toLowerCase().contains(lowerCased);
+            }));
+        });
+
+        SortedList<Vehicle> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedList);
+
+    }
+
+    private void initTooltip() {
+        table.setRowFactory(tableView-> new TableRow<Vehicle>(){
+            private Tooltip tooltip = new Tooltip();
+
+            @Override
+            protected void updateItem(Vehicle vehicle, boolean b) {
+                super.updateItem(vehicle, b);
+                if(vehicle==null){
+                    setTooltip(null);
+                }else{
+                    tooltip.setText("Condition: " + vehicle.getCondition());
+                    setTooltip(tooltip);
+                }
+            }
+        });
     }
 
     public void removeCar(ActionEvent actionEvent) {
@@ -190,3 +233,17 @@ public class Controller implements Initializable {
         //remove from container/carshowrrom
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

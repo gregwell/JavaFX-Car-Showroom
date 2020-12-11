@@ -72,6 +72,8 @@ public class Vehicle implements Comparable<Vehicle> {
         return model;
     }
 
+    public String getName() { return brand+" "+model;}
+
     public ItemCondition getCondition() {
         return condition;
     }
