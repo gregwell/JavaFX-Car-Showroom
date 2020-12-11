@@ -22,13 +22,13 @@
             </Pane>
             <Label fx:id="searchLabel" layoutX="128.0" layoutY="65.0" prefHeight="47.0" prefWidth="58.0" text="Search" textFill="WHITE" />
             <TextField fx:id="searchField" layoutX="177.0" layoutY="75.0" prefHeight="27.0" prefWidth="213.0" />
-            <Button fx:id="buttonRemove" layoutX="283.0" layoutY="586.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="138.0" text="Remove this car" />
+            <Button fx:id="buttonRemove" layoutX="283.0" layoutY="586.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="138.0" text="Remove this car" onAction="#removeCar"/>
             <TableView fx:id="table" layoutX="23.0" layoutY="133.0" prefHeight="441.0" prefWidth="671.0">
               <columns>
                   <TableColumn fx:id="colBrand" prefWidth="100.0" text="Brand" />
                   <TableColumn fx:id="colModel" prefWidth="100.0" text="Model" />
                   <TableColumn fx:id="colShowroomName" prefWidth="270.0" text="Showroom" />
-                  <TableColumn fx:id="colEngine" prefWidth="50.0" text="Engine cap." />
+                  <TableColumn fx:id="colEngine" prefWidth="50.0" text="Engine" />
                   <TableColumn fx:id="colPrice" minWidth="0.0" prefWidth="88.0" text="Price" />
                   <TableColumn fx:id="colYear" minWidth="0.0" prefWidth="50.0" text="Year" />
               </columns>
