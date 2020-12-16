@@ -13,9 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -35,35 +33,29 @@ public class Controller implements Initializable {
     @FXML
     private Label titleLabel;
     @FXML
-    private AnchorPane mainPane;
-    @FXML
     private Pane backgroundPane;
     @FXML
     private Button buttonRemove;
-
     @FXML
     private TextField searchField;
-
     @FXML
-    TableView<Vehicle> table;
+    private ComboBox<CarShowroom> comboBox;
     @FXML
-    TableColumn<Vehicle, String> colBrand;
+    private TableView<Vehicle> table;
     @FXML
-    TableColumn<Vehicle, String> colModel;
+    private TableColumn<Vehicle, String> colBrand;
     @FXML
-    TableColumn<Vehicle, String> colShowroomName;
+    private TableColumn<Vehicle, String> colModel;
     @FXML
-    TableColumn<Vehicle, String> colEngine;
+    private TableColumn<Vehicle, String> colShowroomName;
     @FXML
-    TableColumn<Vehicle, Integer> colPrice;
+    private TableColumn<Vehicle, String> colEngine;
     @FXML
-    TableColumn<Vehicle, Integer> colYear;
-
+    private TableColumn<Vehicle, Integer> colPrice;
     @FXML
-    ComboBox<CarShowroom> comboBox;
+    private TableColumn<Vehicle, Integer> colYear;
 
 
-    //ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
 
     CarShowroomContainer container = new CarShowroomContainer();
 
@@ -72,19 +64,23 @@ public class Controller implements Initializable {
 
     @FXML
     private void closeApp(ActionEvent actionEvent) {
-        System.out.println("X clicked!"); //temporarly just show in a terminal
         System.exit(0);
     }
 
     @FXML
     private void minimizeApp(ActionEvent actionEvent) {
-        System.out.println("app minimized!");
         Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
     public void changeColorToYellow(ActionEvent actionEvent) {
         colorChange("yellow","#ffbe2f", "#000000");
+    }
+    public void changeColorToRed(ActionEvent actionEvent) {
+        colorChange("red","#FF0000", "#FFFFFF");
+    }
+    public void changeColorToGreen(ActionEvent actionEvent) {
+        colorChange("green","#28cc42", "#000000");
     }
 
     private void colorChange(String colorName, String bgColor, String textColor) {
@@ -95,22 +91,12 @@ public class Controller implements Initializable {
         backgroundPane.setStyle("-fx-border-color: " + bgColor);
         buttonRemove.setStyle("-fx-background-color: " + bgColor + "; -fx-text-fill: " + textColor);
 
-
         for (int i =0 ; i<6 ; i++ ) {
             table.getColumns().get(i).getStyleClass().clear();
             table.getColumns().get(i).getStyleClass().add(colorName+"-header");
             table.getColumns().get(i).getStyleClass().add(colorName+"-hover");
             table.getColumns().get(i).getStyleClass().add(colorName+"-selection");
         }
-
-    }
-
-    public void changeColorToRed(ActionEvent actionEvent) {
-        colorChange("red","#FF0000", "#FFFFFF");
-    }
-
-    public void changeColorToGreen(ActionEvent actionEvent) {
-        colorChange("green","#28cc42", "#000000");
     }
 
     private void initTable(CarShowroomContainer container) {
@@ -165,9 +151,6 @@ public class Controller implements Initializable {
         comboBox.getItems().add(new CarShowroom("all",0));
         comboBox.getItems().addAll(observableComboBox);
         comboBox.getSelectionModel().select(0);
-
-
-
     }
 
     public void refreshTableFromComboBox(ActionEvent actionEvent) {
