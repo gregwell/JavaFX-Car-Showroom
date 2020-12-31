@@ -1,8 +1,9 @@
 package api;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Vehicle implements Comparable<Vehicle> {
+public class Vehicle implements Comparable<Vehicle>, Serializable {
 
     String brand;
     String model;

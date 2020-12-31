@@ -1,10 +1,11 @@
 package api;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class
-CarShowroom implements Comparator<String> {
+CarShowroom implements Comparator<String>, Serializable {
 
     String CarCenterName;
     Map<Vehicle, Integer> vehicles;

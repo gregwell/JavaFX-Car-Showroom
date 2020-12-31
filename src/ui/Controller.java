@@ -15,7 +15,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import serialization.Conversion;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,10 +59,14 @@ public class Controller implements Initializable {
 
 
 
-    CarShowroomContainer container = new CarShowroomContainer();
+    private CarShowroomContainer container = new CarShowroomContainer();
+    private Conversion converter = new Conversion(); //zmienic jak nie zdziaal na bez new
+    private List<Vehicle> cart = new ArrayList<>();
+    private boolean isShowingCart = false;
 
     private ObservableList<Vehicle> observableTable = FXCollections.observableArrayList();
     private ObservableList<CarShowroom> observableComboBox = FXCollections.observableArrayList();
+    private ObservableList<Vehicle> observableCart = FXCollections.observableArrayList();
 
     @FXML
     private void closeApp(ActionEvent actionEvent) {
@@ -215,7 +221,72 @@ public class Controller implements Initializable {
         Vehicle selectedVehicle = table.getSelectionModel().getSelectedItem();
         observableTable.remove(selectedVehicle);
         //remove from container/carshowrrom
+        CarShowroom carShowroom = table.getSelectionModel().getSelectedItem().getCarShowroom();
+        carShowroom.removeProduct(selectedVehicle);
     }
+
+    public void serialize(ActionEvent actionEvent) {
+        converter.serialize(container);
+    }
+
+    public void deserialize(ActionEvent actionEvent) {
+        container = (CarShowroomContainer) converter.deserialize();
+        observableTable.removeAll(observableTable);
+        for ( Map.Entry<String, CarShowroom> entry : container.getCarShowroomsMap().entrySet()) {
+            CarShowroom c = entry.getValue();
+            for (Vehicle vehicle : c.getListOfVehicles()) {
+                observableTable.addAll(vehicle);
+            }
+
+        }
+    }
+
+    public void saveCarShowroom(ActionEvent actionEvent) {
+        CarShowroom carShowroom;
+        carShowroom = comboBox.getSelectionModel().getSelectedItem();
+        if(!carShowroom.getCarCenterName().equals("all"))
+        {
+            converter.saveCarShowroom(carShowroom);
+        }
+    }
+
+    public void saveCart(ActionEvent actionEvent) {
+        converter.saveVehiclesCart(cart);
+    }
+
+    public void addToCart(ActionEvent actionEvent) {
+        Vehicle vehicle;
+        vehicle = table.getSelectionModel().getSelectedItem();
+        cart.add(vehicle);
+    }
+
+    public void readCart(ActionEvent event) {
+        List<Vehicle> vehiclesList = new ArrayList<>();
+
+        for ( Map.Entry<String, CarShowroom> entry : container.getCarShowroomsMap().entrySet()) {
+            CarShowroom c = entry.getValue();
+            List<Vehicle> vehicles = c.getListOfVehicles();
+            vehiclesList.addAll(vehicles);
+        }
+        cart = converter.readCartFromFile(vehiclesList);
+    }
+
+    public void showCart(ActionEvent event) {
+        if(isShowingCart==true) {
+            isShowingCart = false;
+            table.setItems(observableTable);
+            initTableSearcher();
+            initComboBox(container);
+        } else {
+            isShowingCart = true;
+            observableCart.setAll(cart);
+            table.setItems(observableCart);
+            initTableSearcher();
+            initComboBox(container);
+        }
+    }
+
+
 }
 
 

@@ -1,9 +1,10 @@
 package api;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CarShowroomContainer {
+public class CarShowroomContainer implements Serializable {
 
     Map<String, CarShowroom> CarCenters;
 
