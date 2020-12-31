@@ -105,6 +105,7 @@ public class Controller implements Initializable {
             CarShowroom c = entry.getValue();
             for (Vehicle vehicles : c.sortByName()) {
                 observableTable.addAll(vehicles);
+                
             }
         }
 
