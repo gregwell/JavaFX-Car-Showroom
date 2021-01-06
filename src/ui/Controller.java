@@ -250,6 +250,16 @@ public class Controller implements Initializable {
         }
     }
 
+    public void readCarShowroom(ActionEvent event) {
+        CarShowroom showroom = comboBox.getSelectionModel().getSelectedItem();
+        List<Vehicle> vehicleList = new ArrayList<>();
+        vehicleList = converter.readCarShowroom(showroom);
+        observableTable.addAll(vehicleList);
+        table.setItems(observableTable);
+        initTableSearcher();
+        initComboBox(container);
+    }
+
     public void saveCart(ActionEvent actionEvent) {
         converter.saveVehiclesCart(cart);
     }
@@ -265,8 +275,9 @@ public class Controller implements Initializable {
 
         for ( Map.Entry<String, CarShowroom> entry : container.getCarShowroomsMap().entrySet()) {
             CarShowroom c = entry.getValue();
-            List<Vehicle> vehicles = c.getListOfVehicles();
-            vehiclesList.addAll(vehicles);
+            for (Vehicle vehicle : c.getListOfVehicles()) {
+                vehiclesList.add(vehicle);
+            }
         }
         cart = converter.readCartFromFile(vehiclesList);
     }

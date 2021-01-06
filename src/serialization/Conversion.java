@@ -65,8 +65,8 @@ public class Conversion {
         stringBuffer.append(vehicle.getProdYear()).append(";");
         stringBuffer.append(vehicle.getEngineCapacity()).append(";");
         stringBuffer.append(vehicle.getProgress()).append(";");
-        stringBuffer.append(vehicle.getPrice()).append(";");
-        bufferedWriter.write(bufferedWriter.toString());
+        stringBuffer.append(vehicle.getPrice());
+        bufferedWriter.write(stringBuffer.toString());
         bufferedWriter.newLine();
     }
 

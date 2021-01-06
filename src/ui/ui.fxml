@@ -28,14 +28,16 @@
                                    <MenuItem mnemonicParsing="false" onAction="#serialize" text="Save/serialize" />
                                    <MenuItem mnemonicParsing="false" onAction="#deserialize" text="Import/deserialize" />
                                    <MenuItem mnemonicParsing="false" onAction="#saveCarShowroom" text="Save carshowroom" />
+                                   <MenuItem mnemonicParsing="false" onAction="#readCarShowroom" text="Read carshowroom" />
                                </items>
                            </Menu>
                            <Menu mnemonicParsing="false" text="Cart">
                                <items>
                                    <MenuItem mnemonicParsing="false" onAction="#addToCart" text="Add to cart" />
-                                   <MenuItem mnemonicParsing="false" onAction="#readCart" text="Read Cart" />
                                    <MenuItem mnemonicParsing="false" onAction="#showCart" text="Show Cart" />
                                    <MenuItem mnemonicParsing="false" onAction="#saveCart" text="Save cart" />
+                                   <MenuItem mnemonicParsing="false" onAction="#readCart" text="Import Cart" />
+
                                </items>
                            </Menu>
                        </menus>
