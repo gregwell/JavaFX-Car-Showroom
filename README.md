@@ -27,13 +27,10 @@ The app allows you to:
 
 ### The structure of MVC project:
 
-**Main.java -** defines the view part of MVC model
-
-**ui.fxml -** defines project structure, and creates the reference for a controller to see the **fx:id** of the component
-
-**styles.css -** all visuals of the fxml project
-
-**Controller.java -** this class implements **Initializable** and has to override initialize() method.
+- **Main.java -** defines the view part of MVC model
+- **ui.fxml -** defines project structure, and creates the reference for a controller to see the **fx:id** of the component
+- **styles.css -** all visuals of the fxml project
+- **Controller.java -** this class implements **Initializable** and has to override initialize() method.
 
 ### Screenshots:
 
