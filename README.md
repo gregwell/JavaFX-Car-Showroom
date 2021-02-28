@@ -2,6 +2,8 @@
 
 **Created:** 7.12.2020, **last update:** 6.01.2021
 
+A simple car showroom management app that allows to list cars in car showrooms and carry out simple operations.
+
 ### Goals:
 
 1. Improve OOP skills
